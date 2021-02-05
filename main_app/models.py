@@ -5,16 +5,16 @@ from django.db import models
 class Resource(models.Model):
     name = models.CharField(max_length=120)
 
-    address1 = models.CharField(max_length=120)
-    address2 = models.CharField(max_length=120)
-    address3 = models.CharField(max_length=120)
-    city = models.CharField(max_length=120)
-    state = models.CharField(max_length=2)
-    zip_code = models.CharField(max_length=5)
+    address1 = models.CharField(max_length=120, blank=True)
+    address2 = models.CharField(max_length=120, blank=True)
+    address3 = models.CharField(max_length=120, blank=True)
+    city = models.CharField(max_length=120, blank=True)
+    state = models.CharField(max_length=2, blank=True)
+    zip_code = models.CharField(max_length=5, blank=True)
 
-    phone = models.CharField(max_length=12)
+    phone = models.CharField(max_length=12, blank=True)
 
-    website = models.CharField(max_length=512)
+    website = models.CharField(max_length=512, blank=True)
     description = models.CharField(max_length=1024)
     verified = models.BooleanField(default=False)
 
