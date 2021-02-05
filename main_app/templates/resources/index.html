@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="mt-5">RESOURCES GO HERE</h1>
+<p class="lead">Community Resources!</p>
+
+{% for resource in resources %}
+    <h2>{{ resource.name }}</h2>
+    <p>{{ resource.address1 }}</p>
+    <p>{{ resource.address2 }}</p>
+    <p>{{ resource.address3 }}</p>
+    <p>{{ resource.city }}, {{ resource.state }} {{ resource.zip_code }}</p>
+
+    <p>Phone: {{ resource.phone }}</p>
+    <p>Website: {{ resource.website }}</p>
+    <p>Description: {{ resource.description }}</p>
+    <p>Verified: {{ resource.verified }}</p>
+{% endfor %}
+
+{% endblock %}
