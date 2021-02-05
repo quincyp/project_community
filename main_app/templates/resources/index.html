@@ -6,16 +6,26 @@
 <p class="lead">Community Resources!</p>
 
 {% for resource in resources %}
-    <h2>{{ resource.name }}</h2>
+{% comment %} Not added on this page    
     <p>{{ resource.address1 }}</p>
     <p>{{ resource.address2 }}</p>
     <p>{{ resource.address3 }}</p>
     <p>{{ resource.city }}, {{ resource.state }} {{ resource.zip_code }}</p>
+ {% endcomment %}
 
-    <p>Phone: {{ resource.phone }}</p>
-    <p>Website: {{ resource.website }}</p>
-    <p>Description: {{ resource.description }}</p>
-    <p>Verified: {{ resource.verified }}</p>
+    <div class="card w-50">
+        <div class="card-body">
+            <h4 class="card-title">{{ resource.name }}</h4>
+            <h6 class="card-subtitle mb-2 text-muted">Phone: {{ resource.phone }}</h6>
+
+            {% comment %} <p class="card-text">Verified: {{ resource.verified }}</p> {% endcomment %}
+            <p class="card-text">Description: {{ resource.description }}</p>
+            
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="#" class="card-link">Website: {{ resource.website }}</a>
+        </div>
+    </div>
 {% endfor %}
+
 
 {% endblock %}
