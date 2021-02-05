@@ -15,3 +15,8 @@ def resources_index(request):
     resources = Resource.objects.all()
     context = { 'resources': resources }
     return render(request, 'resources/index.html', context)
+
+def resources_detail(request, resource_id):
+    resource = Resource.objects.get(id=resource_id)
+    context = { 'resource': resource }
+    return render(request, 'resources/detail.html', context)

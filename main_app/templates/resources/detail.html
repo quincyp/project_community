@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="mt-5">RESOURCES GO HERE</h1>
+<p class="lead">Community Resources!</p>
+
+
+
+<div class="card w-50">
+    <div class="card-body">
+        <h4 class="card-title">{{ resource.name }}</h4>
+        <p class="card-subtitle mb-2 text-muted">{{ resource.address1 }}</p>
+        <p class="card-subtitle mb-2 text-muted">{{ resource.address2 }}</p>
+        <p class="card-subtitle mb-2 text-muted">{{ resource.address3 }}</p>
+        <p class="card-subtitle mb-2 text-muted">{{ resource.city }}, {{ resource.state }} {{ resource.zip_code }}</p>
+        <h6 class="card-subtitle mb-2 text-muted">Phone: {{ resource.phone }}</h6>
+
+        <p class="card-text">Verified: {{ resource.verified }}</p>
+        <p class="card-text">Description: {{ resource.description }}</p>
+        
+        <a href="{{ resource.website }}" class="btn btn-primary">Go to their website</a>
+    </div>
+</div>
+
+
+{% endblock %}
