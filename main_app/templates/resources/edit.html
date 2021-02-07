@@ -68,7 +68,11 @@
                     </tr>
                 </tbody>
             </table>
-            <input class="btn btn-primary" type="submit" value="Edit Resource">
+            
+            <div class="card-footer text-center">
+                <button class="btn btn-primary" type="submit"><i class="fas fa-edit"></i> Submit Update</button>
+                <a href="/resources/{{resource.id}}/delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+            </div>
         </form>
     </div>
 </div>

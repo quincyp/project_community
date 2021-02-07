@@ -5,7 +5,6 @@ from django.http import HttpResponse
 from .models import Resource
 from .forms import Resource_Form
 
-# Create your views here.
 def home(request):
     return render(request, 'home.html')
 
@@ -40,12 +39,14 @@ def resources_edit(request, resource_id):
     if request.method == 'POST':
         resource_form = Resource_Form(request.POST, instance=resource)
         if resource_form.is_valid():
-            # print("================================")
-            # print("here")
-            # print("================================")
             resource_form.save()
             return redirect('resources_detail', resource_id=resource.id)
 
     resource_form = Resource_Form(instance=resource)
     context = { 'resource': resource, 'resource_form': resource_form}
     return render(request, 'resources/edit.html', context)
+
+def resources_delete(request, resource_id):
+    resource = Resource.objects.get(id=resource_id)
+    resource.delete()
+    return redirect('resources_index')

@@ -8,16 +8,6 @@
 
 <div class="card w-70">
     <div class="card-body">
-        {% comment %}   REVIEW: Other formatting style, auto django form  
-        <form action="{% url 'resources_index' %}" method="POST">
-
-            {% csrf_token %}
-                {{ resource_form.as_p }}
-            <input class="btn btn-primary" type="submit" value="Add Resource">
-
-        </form> {% endcomment %}
-
-
         <form action="/resources/" method="POST">
             {% csrf_token %}
             <table>
@@ -78,19 +68,11 @@
                     </tr>
                 </tbody>
             </table>
-            <input class="btn btn-primary" type="submit" value="Add Resource">
+
+            <div class="card-footer text-center">
+                <button class="btn btn-primary" type="submit"><i class="fas fa-plus-square"></i> Add Resource</button>
+            </div>
         </form>
-        {% comment %} <h4 class="card-title">{{ resource.name }}</h4>
-        <p class="card-subtitle mb-2 text-muted">{{ resource.address1 }}</p>
-        <p class="card-subtitle mb-2 text-muted">{{ resource.address2 }}</p>
-        <p class="card-subtitle mb-2 text-muted">{{ resource.address3 }}</p>
-        <p class="card-subtitle mb-2 text-muted">{{ resource.city }}, {{ resource.state }} {{ resource.zip_code }}</p>
-        <h6 class="card-subtitle mb-2 text-muted">Phone: {{ resource.phone }}</h6>
-
-        <p class="card-text">Verified: {{ resource.verified }}</p>
-        <p class="card-text">Description: {{ resource.description }}</p>
-
-        <a href="http://{{ resource.website }}" class="btn btn-primary">Go to their website</a> {% endcomment %}
     </div>
 </div>
 

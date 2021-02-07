@@ -6,14 +6,14 @@
 <p class="lead">Community Resources!</p>
 
 {% for resource in resources %}
-    <div class="card w-50">
+    <a href="/resources/{{resource.id}}/detail" class="card w-50 cards_list">
         <div class="card-body">
             <h4 class="card-title">{{ resource.name }}</h4>
             <h6 class="card-subtitle mb-2 text-muted">Phone: {{ resource.phone }}</h6>
             <p class="card-text">Description: {{ resource.description }}</p>
-            <a href="/resources/{{resource.id}}/detail" class="btn btn-primary">See Details</a>
+            {% comment %} <a href="/resources/{{resource.id}}/detail" class="btn btn-primary">See Details</a> {% endcomment %}
         </div>
-    </div>
+    </a>
 {% endfor %}
 
 
