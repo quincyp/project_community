@@ -15,15 +15,20 @@
         {% else %}
             <h4 class="card-title">{{ resource.name }}</h4>
         {% endif %}
+
+        {% if resource.phone %}
+            <p class="card-subtitle my-2 text-muted"><i class="fas fa-sm fa-phone-alt"></i> {{ resource.phone }}</p>
+        {% else %}
+            <p class="card-subtitle my-2 text-muted"><i class="fas fa-sm fa-phone-alt"></i> Phone Unknown</p>
+        {% endif %}
         
         <p class="card-subtitle my-1 text-muted">{{ resource.address1 }}</p>
         <p class="card-subtitle mb-1 text-muted">{{ resource.address2 }}</p>
         <p class="card-subtitle mb-1 text-muted">{{ resource.address3 }}</p>
-        <p class="card-subtitle mb-4 text-muted">{{ resource.city }}, {{ resource.state }} {{ resource.zip_code }}</p>
-        <p class="card-subtitle mb-4">Phone: {{ resource.phone }}</p>
+        <p class="card-subtitle mb-4 text-muted">{{ resource.city }} {{ resource.state }} {{ resource.zip_code }}</p>
 
         <p class="card-text">Verified: {{ resource.verified }}</p>
-        <p class="card-text">Description: {{ resource.description }}</p>
+        <p class="card-text mt-5">Description: {{ resource.description }}</p>
 
         <div class="card-footer text-center">
             Not up to date? <a href="/resources/{{resource.id}}/edit" class="btn btn-primary"><i class="fas fa-edit"></i> Update</a>
