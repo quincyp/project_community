@@ -10,10 +10,7 @@
         <div class="card-body">
             <h4 class="card-title">{{ resource.name }}</h4>
             <h6 class="card-subtitle mb-2 text-muted">Phone: {{ resource.phone }}</h6>
-
-            {% comment %} <p class="card-text">Verified: {{ resource.verified }}</p> {% endcomment %}
             <p class="card-text">Description: {{ resource.description }}</p>
-            
             <a href="/resources/{{resource.id}}/detail" class="btn btn-primary">See Details</a>
         </div>
     </div>
