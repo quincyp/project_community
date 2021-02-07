@@ -9,9 +9,14 @@
     <a href="/resources/{{resource.id}}/detail" class="card w-50 cards_list">
         <div class="card-body">
             <h4 class="card-title">{{ resource.name }}</h4>
-            <h6 class="card-subtitle mb-2 text-muted">Phone: {{ resource.phone }}</h6>
-            <p class="card-text">Description: {{ resource.description }}</p>
-            {% comment %} <a href="/resources/{{resource.id}}/detail" class="btn btn-primary">See Details</a> {% endcomment %}
+
+            {% if resource.phone %}
+                <p class="card-subtitle my-2 text-muted"><i class="fas fa-sm fa-phone-alt"></i> {{ resource.phone }}</p>
+            {% else %}
+                <p class="card-subtitle my-2 text-muted"><i class="fas fa-sm fa-phone-alt"></i> Phone Unknown</p>
+            {% endif %}
+            
+            <p class="card-text mt-4">{{ resource.description }}</p>            
         </div>
     </a>
 {% endfor %}
