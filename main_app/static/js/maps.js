@@ -13,34 +13,44 @@ const error = (error) => console.log(error);
 // Gets the current user location
 navigator.geolocation.getCurrentPosition(success, error);
 
-function initMap(position) {
-    geocoder = new google.maps.Geocoder();
 
+function initMap(position) {
+    const markerArray = [];
+    geocoder = new google.maps.Geocoder();
+    
+    
     // The location of Seattle
     const seattle = {
         lat: 47.608,
         lng: -122.3321
     };
-
+    
     // The map, centered at user location
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 13,
         center: position,
     });
-
+    
     var circleSymbol = {
         path: google.maps.SymbolPath.CIRCLE,
         scale: 8,
         strokeColor: '#4285F4'
     };
-
-    // The user's marker, set as circle to differentiate from other markers
+    
+    const infowindow = new google.maps.InfoWindow({
+        content: "You are here",
+    });
+    // The user's marker, set as circle to differentiate from other
     const userMarker = new google.maps.Marker({
         position: position,
         icon: circleSymbol,
         map: map,
     });
     userMarker.setAnimation(google.maps.Animation.DROP);
+    infowindow.open(map, userMarker);
+    userMarker.addListener("click", () => {
+        infowindow.open(map, userMarker);
+    });
 
     // Takes in address's and geocodes lat, lng then generates markers
     codeAddress(map, geocoder);
@@ -48,21 +58,34 @@ function initMap(position) {
 
 function codeAddress(map, geocoder) {
     let address = document.querySelectorAll('.address');
+    let prev_infowindow = false;
     console.log(address);
-
     for (let i = 0; i < address.length; i++) {
         geocoder.geocode({
             'address': address[i].innerHTML
         }, function (results, status) {
             if (status == 'OK') {
-                // map.setCenter(results[0].geometry.location);
-                // const setPosition = { 
-                //     lat: results[0].geometry.location.lat(), 
-                //     lng: results[0].geometry.location.lng() 
-                // };
                 const marker = new google.maps.Marker({
                     position: results[0].geometry.location,
                     map: map,
+                });
+
+                let url = 'https://www.google.com/maps?q=' + encodeURIComponent(marker.getPosition().toUrlValue());
+                const infowindow = new google.maps.InfoWindow({
+                    content: `${address[i].innerHTML} <br /><a href=${url} target="_blank">View On Google Maps</a>`,
+                });
+
+                // marker.addListener("click", () => {
+                //     console.log("clicked");
+                //     infowindow.open(map, marker);
+                // });
+
+                google.maps.event.addListener(marker, 'click', function(){
+                    if(prev_infowindow) {
+                        prev_infowindow.close();
+                    }
+                    prev_infowindow = infowindow;
+                    infowindow.open(map, marker);
                 });
             } else {
                 alert('Geocode was not successful for the following reason: ' + status);
@@ -70,6 +93,8 @@ function codeAddress(map, geocoder) {
         });
     }
 }
+
+
 
 /*
 Test Locations:
