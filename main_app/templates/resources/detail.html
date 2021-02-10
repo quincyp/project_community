@@ -31,6 +31,8 @@
                         <h4 class="card-title">{{ resource.name }}</h4>
                     {% endif %}
 
+                    <p class="card-subtitle my-2 text-muted distance">Distance text</p>
+
                     {% if resource.phone %}
                         <p class="card-subtitle my-2 text-muted"><i class="fas fa-sm fa-phone-alt"></i> {{ resource.phone }}</p>
                     {% else %}
@@ -54,5 +56,5 @@
     </div>
 </div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&libraries=&v=weekly" async ></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_MAPS_API_KEY}}&callback=initMap&libraries=&v=weekly" async ></script>
 {% endblock %}
