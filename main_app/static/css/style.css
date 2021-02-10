@@ -29,9 +29,16 @@ main > .container {
     }
 }
 
+/* Removes google translate banner */
 .goog-te-banner-frame.skiptranslate {
     display: none !important;
-    } 
+} 
+/* Adjusts google translate element dropdown */
+.goog-te-gadget .goog-te-combo {
+    margin: 4px 0;
+    width: 205px;
+}
+/* Gets rid of google translate frame pushing content down */
 body {
     top: 0px !important; 
 }
