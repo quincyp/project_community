@@ -16,6 +16,7 @@
         {% comment %} If address avail then addr info provided to google maps here {% endcomment %}
         {% for resource in resources %}
             {% if resource.address1 and resource.city and resource.state and resource.zip_code %}
+            <div class="name" style="display: none" value='{{ resource.name }}'>{{ resource.name }}</div>
             <div class="address" style="display: none" value='{{ resource.address1 }} {{ resource.city }} {{ resource.state }} {{ resource.zip_code }}'>{{ resource.address1 }} {{ resource.city }} {{ resource.state }} {{ resource.zip_code }}</div>
             {% endif %}
         {% endfor %}

@@ -12,19 +12,7 @@ const sanfran = {
 }
 initMap(seattle);
 
-// Creates the position lat/lng and passes to init map
-// const success = (position) => {  
-//     console.log("here");  
-//     console.log(position);
-//     initMap({ //initMap with starting location, otherwise map.setCenter
-//         lat: position.coords.latitude,
-//         lng: position.coords.longitude,
-//     });
-// };
-// const error = (error) => console.log(error);
 
-// // // Gets the current user location on click
-// navigator.geolocation.getCurrentPosition(success, error, {maximumAge:1000, timeout:5000, enableHighAccuracy:true});
 
 function initMap(position) {
     geocoder = new google.maps.Geocoder();
@@ -73,7 +61,7 @@ function initMap(position) {
     };
     const error = (error) => console.log(error);
 
-    // // Gets the current user location on click
+    // Gets the current user location on click
     const getUserButton = document.getElementById("getUserButton");
     getUserButton.addEventListener("click", () => {
         console.log("click");
@@ -84,7 +72,9 @@ function initMap(position) {
 
 function codeAddress(map, geocoder) {
     let address = document.querySelectorAll('.address');
+    let name = document.querySelectorAll('.name');
     let prev_infowindow = false;
+    console.log(name);
     console.log(address);
     for (let i = 0; i < address.length; i++) {
         geocoder.geocode({
@@ -94,12 +84,13 @@ function codeAddress(map, geocoder) {
                 const marker = new google.maps.Marker({
                     position: results[0].geometry.location,
                     map: map,
+                    title: name[i].innerHTML,
                 });
                 
                 // Builds google maps url using coordinates
-                let url = 'https://www.google.com/maps?q=' + encodeURIComponent(marker.getPosition().toUrlValue());
+                let url = 'https://www.google.com/maps?q=' + encodeURIComponent(`${name[i].innerHTML} ${address[i].innerHTML}`); //Lat/Lng alternative: encodeURIComponent(marker.getPosition().toUrlValue())
                 const infowindow = new google.maps.InfoWindow({
-                    content: `${address[i].innerHTML} <br /><a href=${url} target="_blank">View On Google Maps</a>`,
+                    content: `<h6>${name[i].innerHTML}</h6>${address[i].innerHTML} <br /><a href=${url} target="_blank">View On Google Maps</a>`,
                 });
 
                 // Markers have click listener, closes prev if new marker clicked
