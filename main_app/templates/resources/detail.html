@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1 class="mt-5">Resource Details</h1>
-<p class="lead">Community Resources!</p>
+<p class="lead">Community Resources! <button class="btn btn-primary" id="getUserButton">Find Near Me</button></p>
 
 <div class="container">
     <div class="row">
@@ -14,6 +14,7 @@
 
             {% comment %} If address avail then addr info provided to google maps here {% endcomment %}
             {% if resource.address1 and resource.city and resource.state and resource.zip_code %}
+            <div class="name" style="display: none" value='{{ resource.name }}'>{{ resource.name }}</div>
             <div class="address" style="display: none" value='{{ resource.address1 }} {{ resource.city }} {{ resource.state }} {{ resource.zip_code }}'>{{ resource.address1 }} {{ resource.city }} {{ resource.state }} {{ resource.zip_code }}</div>
             {% endif %}
         </div>
@@ -56,5 +57,7 @@
     </div>
 </div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_MAPS_API_KEY}}&callback=initMap&libraries=&v=weekly" async ></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_MAPS_API_KEY}}&callback=initMap&libraries=&v=weekly"></script>
+{% load static %}
+<script src="{% static 'js/maps.js' %}"></script>
 {% endblock %}

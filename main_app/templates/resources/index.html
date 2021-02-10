@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1 class="mt-5">Resources</h1>
-<p class="lead">Community Resources!</p>
+<p class="lead">Community Resources! <button class="btn btn-primary" id="getUserButton">Find Near Me</button></p>
 
 <div class="container">
     <div class="row">
@@ -16,6 +16,7 @@
         {% comment %} If address avail then addr info provided to google maps here {% endcomment %}
         {% for resource in resources %}
             {% if resource.address1 and resource.city and resource.state and resource.zip_code %}
+            <div class="name" style="display: none" value='{{ resource.name }}'>{{ resource.name }}</div>
             <div class="address" style="display: none" value='{{ resource.address1 }} {{ resource.city }} {{ resource.state }} {{ resource.zip_code }}'>{{ resource.address1 }} {{ resource.city }} {{ resource.state }} {{ resource.zip_code }}</div>
             {% endif %}
         {% endfor %}
@@ -26,7 +27,7 @@
                 <a href="/resources/{{resource.id}}/detail" class="card w-100 cards_list">
                     <div class="card-body">
                         <h4 class="card-title">{{ resource.name }}</h4>
-
+                        <p class="card-subtitle my-2 text-muted distance">Distance text</p>
                         {% if resource.phone %}
                             <p class="card-subtitle my-2 text-muted"><i class="fas fa-sm fa-phone-alt"></i> {{ resource.phone }}</p>
                         {% else %}
@@ -42,5 +43,7 @@
 </div>
 
 
-<script src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_MAPS_API_KEY}}&callback=initMap&libraries=&v=weekly" class="key" id="{{GOOGLE_MAPS_API_KEY}}" async ></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_MAPS_API_KEY}}&callback=initMap&libraries=&v=weekly" class="key" id="{{GOOGLE_MAPS_API_KEY}}"></script>
+{% load static %}
+<script src="{% static 'js/maps.js' %}"></script>
 {% endblock %}
