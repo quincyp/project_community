@@ -3,38 +3,61 @@
 {% block content %}
 
 <h1 class="mt-5">Resource Details</h1>
-<p class="lead">Community Resources!</p>
+<p class="lead">Community Resources! <button class="btn btn-primary" id="getUserButton">Find Near Me</button></p>
 
+<div class="container">
+    <div class="row">
+        {% comment %} Column 1 of 2 {% endcomment %}
+        <div class="col-md-6">
+            {% comment %} Google Maps {% endcomment %}
+            <div id="map"></div>
 
-<div class="card w-50">
-    <div class="card-body">
-        {% if resource.website %}
-            <a href="http://{{ resource.website }}" target="_blank">
-                <h4 class="card-title"><i class="fas fa-globe-americas"></i> {{ resource.name }}</h4>
-            </a>
-        {% else %}
-            <h4 class="card-title">{{ resource.name }}</h4>
-        {% endif %}
+            {% comment %} If address avail then addr info provided to google maps here {% endcomment %}
+            {% if resource.address1 and resource.city and resource.state and resource.zip_code %}
+            <div class="name" style="display: none" value='{{ resource.name }}'>{{ resource.name }}</div>
+            <div class="address" style="display: none" value='{{ resource.address1 }} {{ resource.city }} {{ resource.state }} {{ resource.zip_code }}'>{{ resource.address1 }} {{ resource.city }} {{ resource.state }} {{ resource.zip_code }}</div>
+            {% endif %}
+        </div>
 
-        {% if resource.phone %}
-            <p class="card-subtitle my-2 text-muted"><i class="fas fa-sm fa-phone-alt"></i> {{ resource.phone }}</p>
-        {% else %}
-            <p class="card-subtitle my-2 text-muted"><i class="fas fa-sm fa-phone-alt"></i> Phone Unknown</p>
-        {% endif %}
-        
-        <p class="card-subtitle my-1 text-muted">{{ resource.address1 }}</p>
-        <p class="card-subtitle mb-1 text-muted">{{ resource.address2 }}</p>
-        <p class="card-subtitle mb-1 text-muted">{{ resource.address3 }}</p>
-        <p class="card-subtitle mb-4 text-muted">{{ resource.city }} {{ resource.state }} {{ resource.zip_code }}</p>
+        {% comment %} Column 2 of 2 {% endcomment %}
+        <div class="col-md-6">
+            <div class="card w-100">
+                <div class="card-body">
+                    {% if resource.website %}
+                        {% comment %} REVIEW: this section for http at some point {% endcomment %}
+                        <a href="http://{{ resource.website }}" target="_blank">
+                            <h4 class="card-title"><i class="fas fa-globe-americas"></i> {{ resource.name }}</h4>
+                        </a>
+                    {% else %}
+                        <h4 class="card-title">{{ resource.name }}</h4>
+                    {% endif %}
 
-        <p class="card-text">Verified: {{ resource.verified }}</p>
-        <p class="card-text mt-5">Description: {{ resource.description }}</p>
+                    <p class="card-subtitle my-2 text-muted distance">Distance text</p>
 
-        <div class="card-footer text-center">
-            Not up to date? <a href="/resources/{{resource.id}}/edit" class="btn btn-primary"><i class="fas fa-edit"></i> Update</a>
+                    {% if resource.phone %}
+                        <p class="card-subtitle my-2 text-muted"><i class="fas fa-sm fa-phone-alt"></i> {{ resource.phone }}</p>
+                    {% else %}
+                        <p class="card-subtitle my-2 text-muted"><i class="fas fa-sm fa-phone-alt"></i> Phone Unknown</p>
+                    {% endif %}
+                    
+                    <p class="card-subtitle my-1 text-muted">{{ resource.address1 }}</p>
+                    <p class="card-subtitle mb-1 text-muted">{{ resource.address2 }}</p>
+                    <p class="card-subtitle mb-1 text-muted">{{ resource.address3 }}</p>
+                    <p class="card-subtitle mb-4 text-muted">{{ resource.city }} {{ resource.state }} {{ resource.zip_code }}</p>
+
+                    <p class="card-text">Verified: {{ resource.verified }}</p>
+                    <p class="card-text mt-5">Description: {{ resource.description }}</p>
+
+                    <div class="card-footer text-center">
+                        Not up to date? <a href="/resources/{{resource.id}}/edit" class="btn btn-primary"><i class="fas fa-edit"></i> Update</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-
+<script src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_MAPS_API_KEY}}&callback=initMap&libraries=&v=weekly"></script>
+{% load static %}
+<script src="{% static 'js/maps.js' %}"></script>
 {% endblock %}

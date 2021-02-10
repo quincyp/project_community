@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.conf import settings
 
 
 from .models import Resource
@@ -18,12 +19,13 @@ def resources_index(request):
             new_resource = resource_form.save()
             return redirect('resources_index')
     resources = Resource.objects.all()
-    context = { 'resources': resources }
+    context = { 'resources': resources, 'GOOGLE_MAPS_API_KEY': settings.GOOGLE_MAPS_API_KEY }
+    print(context)
     return render(request, 'resources/index.html', context)
 
 def resources_detail(request, resource_id):
     resource = Resource.objects.get(id=resource_id)
-    context = { 'resource': resource }
+    context = { 'resource': resource, 'GOOGLE_MAPS_API_KEY': settings.GOOGLE_MAPS_API_KEY }
     return render(request, 'resources/detail.html', context)
 
 def about(request):

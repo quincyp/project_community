@@ -29,6 +29,11 @@ main > .container {
     }
 }
 
+#map {
+    height: 520px;
+    width: 100%;
+}
+
 a,
 a.card,
 a.card:hover {
