@@ -1,18 +1,40 @@
 let geocoder;
 let map;
 
+            // if (navigator.geolocation) {
+            //     navigator.geolocation.getCurrentPosition(success2, error2);
+            // } else {
+            //     alert('location not supported');
+            // }
+
+            // //callbacks
+            // function error2(msg) {
+            //     alert('error in geolocation');
+            // }
+            // function success2(position) {
+            //     var lats = position.coords.latitude;
+            //     var lngs = position.coords.longitude;
+            //     alert(lats);
+            //     alert(lngs)
+            // };
+
 // Creates the position lat/lng and passes to init map
-const success = (position) => {    
-    initMap({ 
-        lat: position.coords.latitude, 
-        lng: position.coords.longitude, 
-    });
+const success = (position) => {  
+    console.log("here");  
+    console.log(position);
+    const pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+    }
 };
 const error = (error) => console.log(error);
 
-// Gets the current user location
-navigator.geolocation.getCurrentPosition(success, error);
-
+// // Gets the current user location on click
+const getUserButton = document.getElementById("getUserButton");
+getUserButton.addEventListener("click", () => {
+    console.log("click");
+    navigator.geolocation.getCurrentPosition(success, error);
+});
 
 function initMap(position) {
     const markerArray = [];
@@ -28,10 +50,11 @@ function initMap(position) {
     // The map, centered at user location
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 13,
-        center: position,
+        center: seattle,
     });
     
-    var circleSymbol = {
+    
+    const circleSymbol = {
         path: google.maps.SymbolPath.CIRCLE,
         scale: 8,
         strokeColor: '#4285F4'
@@ -42,7 +65,7 @@ function initMap(position) {
     });
     // The user's marker, set as circle to differentiate from other
     const userMarker = new google.maps.Marker({
-        position: position,
+        position: seattle,
         icon: circleSymbol,
         map: map,
     });
@@ -54,6 +77,37 @@ function initMap(position) {
 
     // Takes in address's and geocodes lat, lng then generates markers
     codeAddress(map, geocoder);
+    // const locationButton = document.createElement("button");
+    // locationButton.textContent = "Pan to Current Location";
+    // locationButton.classList.add("custom-map-control-button");
+    // map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+    // locationButton.addEventListener("click", () => {
+    //     console.log("clicked");
+    //   // Try HTML5 geolocation.
+    //     if (navigator.geolocation) {
+    //         console.log("true");
+    //         navigator.geolocation.getCurrentPosition(
+    //         (position) => {
+    //             const pos = {
+    //             lat: position.coords.latitude,
+    //             lng: position.coords.longitude,
+    //             }
+    //             const map = new google.maps.Map(document.getElementById("map"), {
+    //                 zoom: 13,
+    //                 center: pos,
+    //             });
+    //             console.log(pos);
+    //             infoWindow.setPosition(pos);
+    //             infoWindow.setContent("Location found.");
+    //             infoWindow.open(map);
+    //             map.setCenter(pos);
+    //         },
+    //         () => {
+    //             handleLocationError(true, infoWindow, map.getCenter());
+    //         }
+    //         );
+    //     }   
+    // }); 
 }
 
 function codeAddress(map, geocoder) {
@@ -69,17 +123,14 @@ function codeAddress(map, geocoder) {
                     position: results[0].geometry.location,
                     map: map,
                 });
-
+                
+                // Builds google maps url using coordinates
                 let url = 'https://www.google.com/maps?q=' + encodeURIComponent(marker.getPosition().toUrlValue());
                 const infowindow = new google.maps.InfoWindow({
                     content: `${address[i].innerHTML} <br /><a href=${url} target="_blank">View On Google Maps</a>`,
                 });
 
-                // marker.addListener("click", () => {
-                //     console.log("clicked");
-                //     infowindow.open(map, marker);
-                // });
-
+                // Markers have click listener, closes prev if new marker clicked
                 google.maps.event.addListener(marker, 'click', function(){
                     if(prev_infowindow) {
                         prev_infowindow.close();
