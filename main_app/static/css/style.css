@@ -48,6 +48,10 @@ body {
     width: 100%;
 }
 
+.icon-pad {
+    padding: 12px 12px;
+}
+
 a,
 a.card,
 a.card:hover {
