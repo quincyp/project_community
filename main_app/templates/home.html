@@ -4,4 +4,29 @@
 <h1 class="mt-5">Home Test</h1>
 <p class="lead">Community Resources!</p>
 
+{% comment %} <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-trigger="focus" title="The Translate Feature" data-bs-placement="bottom" data-bs-content="Translation may take some time to process on load for each page.">Icon</button> {% endcomment %}
+
+{% comment %} <i class="fas fa-language" id="iconLanguage3" data-bs-toggle="popover" data-bs-trigger="focus" title="The Translate Feature" data-bs-placement="bottom" data-bs-content="Translation may take some time to process on load for each page."></i> {% endcomment %}
+
+<span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
+    <i class="fas fa-language"></i>
+    {% comment %} <button class="btn btn-primary" type="button" disabled>Disabled button</button> {% endcomment %}
+    {% comment %} words {% endcomment %}
+</span>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl)
+})
+
+var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
+    trigger: 'hover focus'
+})
+
+</script>
+
 {% endblock %}
