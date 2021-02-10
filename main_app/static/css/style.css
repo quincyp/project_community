@@ -29,6 +29,13 @@ main > .container {
     }
 }
 
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+    } 
+body {
+    top: 0px !important; 
+}
+
 #map {
     height: 520px;
     width: 100%;
