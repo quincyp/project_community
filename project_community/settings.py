@@ -13,10 +13,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 import os
-import environ
-env = environ.Env()
-# reading .env file
-environ.Env.read_env()
+# import environ
+# env = environ.Env()
+# # reading .env file
+# environ.Env.read_env()
 
 
 
