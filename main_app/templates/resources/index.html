@@ -10,9 +10,9 @@
 {% comment %} REVIEW: left off here, attempting to add dropdown meny that filters using query params / django url config {% endcomment %}
 <div class="dropdown">
     <span class="lead">I am looking for...</span> 
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Select Resource</button>
+    <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">{{resource_query}}</button>
     <ul name="resource_type" id="id_resource_type" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="{% url 'resources_index' %}">View All</a></li>
+        <li><a class="dropdown-item" href="{% url 'resources_index' %}">All Resources</a></li>
         <li><a class="dropdown-item" href="?resource_type=HEAL">Healthcare</a></li>
         <li><a class="dropdown-item" href="?resource_type=HOUS">Housing/Shelter</a></li>
         <li><a class="dropdown-item" href="?resource_type=FOOD">Food</a></li>
