@@ -15,7 +15,8 @@ def about(request):
 def resources_index(request):
 
     # query string /?resource_type gets the string value stored into variable and passed to context
-    resource_query = request.GET.get('resource_type', 'ALL')
+    resource_query = request.GET.get('resource_type', 'All Resources')
+    # print(resource_query.get_resource_type_display())
     if request.method == 'POST':
         resource_form = Resource_Form(request.POST)
         if resource_form.is_valid():
