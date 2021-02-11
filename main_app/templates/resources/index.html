@@ -5,6 +5,39 @@
 <h1 class="mt-5">Resources</h1>
 <p class="lead">Community Resources! <button class="btn btn-primary" id="getUserButton">Find Near Me</button></p>
 
+
+{% comment %} {{resource_query}} {% endcomment %}
+{% comment %} REVIEW: left off here, attempting to add dropdown meny that filters using query params / django url config {% endcomment %}
+<div class="dropdown">
+    <span class="lead">I am looking for...</span> 
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Select Resource</button>
+    <ul name="resource_type" id="id_resource_type" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="{% url 'resources_index' %}">View All</a></li>
+        <li><a class="dropdown-item" href="?resource_type=HEAL">Healthcare</a></li>
+        <li><a class="dropdown-item" href="?resource_type=HOUS">Housing/Shelter</a></li>
+        <li><a class="dropdown-item" href="?resource_type=FOOD">Food</a></li>
+        <li><a class="dropdown-item" href="?resource_type=EMPL">Employment</a></li>
+        <li><a class="dropdown-item" href="?resource_type=EDUC">Education</a></li>
+        <li><a class="dropdown-item" href="?resource_type=UTIL">Utility/Financial</a></li>
+        <li><a class="dropdown-item" href="?resource_type=TRAN">Transportaion</a></li>
+        <li><a class="dropdown-item" href="?resource_type=DISA">Disability</a></li>
+        <li><a class="dropdown-item" href="?resource_type=DOME">Domestic Violence</a></li>
+    </ul>
+</div>
+
+{% comment %} REVIEW: Other styling {% endcomment %}
+{% comment %} <select name="resource_type" id="id_resource_type">
+    <option value="HEAL" selected="">Healthcare</option>
+    <option value="HOUS">Housing/Shelter</option>
+    <option value="FOOD">Food</option>
+    <option value="EMPL">Employment</option>
+    <option value="EDUC">Education</option>
+    <option value="UTIL">Utility/Financial</option>
+    <option value="TRAN">Transportaion</option>
+    <option value="DISA">Disability</option>
+    <option value="DOME">Domestic Violence</option>
+</select> {% endcomment %}
+
 <div class="container">
     <div class="row">
         {% comment %} Column 1 of 2 {% endcomment %}
@@ -13,17 +46,20 @@
             <div id="map"></div>
         </div>
         
-        {% comment %} If address avail then addr info provided to google maps here {% endcomment %}
+        {% comment %} If resource type matches and address avail then addr info provided to google maps here {% endcomment %}
         {% for resource in resources %}
-            {% if resource.address1 and resource.city and resource.state and resource.zip_code %}
-            <div class="name" style="display: none" value='{{ resource.name }}'>{{ resource.name }}</div>
-            <div class="address" style="display: none" value='{{ resource.address1 }} {{ resource.city }} {{ resource.state }} {{ resource.zip_code }}'>{{ resource.address1 }} {{ resource.city }} {{ resource.state }} {{ resource.zip_code }}</div>
+            {% if resource.resource_type == resource_query %}
+                {% if resource.address1 and resource.city and resource.state and resource.zip_code %}
+                <div class="name" style="display: none" value='{{ resource.name }}'>{{ resource.name }}</div>
+                <div class="address" style="display: none" value='{{ resource.address1 }} {{ resource.city }} {{ resource.state }} {{ resource.zip_code }}'>{{ resource.address1 }} {{ resource.city }} {{ resource.state }} {{ resource.zip_code }}</div>
+                {% endif %}
             {% endif %}
         {% endfor %}
 
         {% comment %} Column 2 of 2 {% endcomment %}
         <div class="col-md-6">
             {% for resource in resources %}
+                {% if resource.resource_type == resource_query %}
                 <a href="/resources/{{resource.id}}/detail" class="card w-100 cards_list">
                     <div class="card-body">
                         <h4 class="card-title">{{ resource.name }}</h4>
@@ -37,6 +73,7 @@
                         <p class="card-text mt-4">{{ resource.description }}</p>            
                     </div>
                 </a>
+                {% endif %}
             {% endfor %}
         </div>
     </div>

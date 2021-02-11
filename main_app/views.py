@@ -13,15 +13,21 @@ def about(request):
     return render(request, 'about.html')
 
 def resources_index(request):
+
+    # query string /?resource_type gets the string value stored into variable and passed to context
+    resource_query = request.GET.get('resource_type', 'ALL')
+
     if request.method == 'POST':
         resource_form = Resource_Form(request.POST)
         if resource_form.is_valid():
             new_resource = resource_form.save()
             return redirect('resources_index')
     resources = Resource.objects.all()
-    context = { 'resources': resources, 'GOOGLE_MAPS_API_KEY': settings.GOOGLE_MAPS_API_KEY }
+    context = { 'resources': resources, 'GOOGLE_MAPS_API_KEY': settings.GOOGLE_MAPS_API_KEY, 'resource_query': resource_query }
     print(context)
     return render(request, 'resources/index.html', context)
+
+
 
 def resources_detail(request, resource_id):
     resource = Resource.objects.get(id=resource_id)

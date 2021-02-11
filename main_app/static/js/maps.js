@@ -90,7 +90,7 @@ function codeAddress(map, geocoder) {
                 // Builds google maps url using coordinates
                 let url = 'https://www.google.com/maps?q=' + encodeURIComponent(`${name[i].innerHTML} ${address[i].innerHTML}`); //Lat/Lng alternative: encodeURIComponent(marker.getPosition().toUrlValue())
                 const infowindow = new google.maps.InfoWindow({
-                    content: `<h6>${name[i].innerHTML}</h6>${address[i].innerHTML} <br /><a href=${url} target="_blank">View On Google Maps</a>`,
+                    content: `<h6>${name[i].innerHTML}</h6>${address[i].innerHTML} <br /><a href=${url} target="_blank">View On Google Maps <i class="fas fa-map-marked-alt"></i></a>`,
                 });
 
                 // Markers have click listener, closes prev if new marker clicked
