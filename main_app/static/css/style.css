@@ -52,6 +52,14 @@ body {
     padding: 12px 12px;
 }
 
+#dropdownMenuButton {
+    width: 167px;
+}
+
+#copyTarget:hover {
+    cursor: pointer;
+}
+
 a,
 a.card,
 a.card:hover {

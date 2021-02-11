@@ -3,9 +3,23 @@
 {% block content %}
 
 <h1 class="mt-5">Resource Details</h1>
-<p class="lead">Community Resources! <button class="btn btn-primary" id="getUserButton">Find Near Me</button></p>
-
+<p class="lead">Community Resources!</p>
 <div class="container">
+    <div class="row">
+        <div class="col mb-4">
+            <button
+                class="btn btn-primary d-inline-block" 
+                tabindex="0" 
+                data-bs-toggle="popover" 
+                data-bs-trigger="focus" 
+                data-bs-placement="bottom" 
+                title="Locate (Permission Required)" 
+                data-bs-content="Locate may take a moment to process" 
+                id="getUserButton">
+                <i class="fas fa-crosshairs"></i> Map My Location
+            </button>
+        </div>
+    </div>
     <div class="row">
         {% comment %} Column 1 of 2 {% endcomment %}
         <div class="col-md-6">
@@ -29,21 +43,23 @@
                             <h4 class="card-title"><i class="fas fa-globe-americas"></i> {{ resource.name }}</h4>
                         </a>
                     {% else %}
-                        <h4 class="card-title">{{ resource.name }}</h4>
+                        <h4 class="card-title d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" title="Copied" data-bs-content='"{{ resource.name }}"' onclick="clipboardCopy()" id="copyTarget"><i class="far fa-clipboard"></i> {{ resource.name }}</h4>
                     {% endif %}
 
-                    <p class="card-subtitle my-2 text-muted distance">Distance text</p>
+                    {% comment %} <p class="card-subtitle my-2 text-muted distance">Distance text</p> {% endcomment %}
 
                     {% if resource.phone %}
-                        <p class="card-subtitle my-2 text-muted"><i class="fas fa-sm fa-phone-alt"></i> {{ resource.phone }}</p>
+                        <a href="tel:{{resource.phone}}"><p class="card-subtitle my-2"><i class="fas fa-sm fa-phone-alt"></i> {{ resource.phone }}</p></a>
                     {% else %}
                         <p class="card-subtitle my-2 text-muted"><i class="fas fa-sm fa-phone-alt"></i> Phone Unknown</p>
                     {% endif %}
                     
-                    <p class="card-subtitle my-1 text-muted">{{ resource.address1 }}</p>
-                    <p class="card-subtitle mb-1 text-muted">{{ resource.address2 }}</p>
-                    <p class="card-subtitle mb-1 text-muted">{{ resource.address3 }}</p>
-                    <p class="card-subtitle mb-4 text-muted">{{ resource.city }} {{ resource.state }} {{ resource.zip_code }}</p>
+                    <a href="https://www.google.com/maps?q={{resource.name}} {{resource.address1}} {{ resource.city }} {{ resource.state }} {{ resource.zip_code }}" target="_blank">
+                        <p class="card-subtitle my-1"><i class="fas fa-map-marker-alt"></i> {{ resource.address1 }}</p>
+                        <p class="card-subtitle mb-1">{{ resource.address2 }}</p>
+                        <p class="card-subtitle mb-1">{{ resource.address3 }}</p>
+                        <p class="card-subtitle mb-4">{{ resource.city }} {{ resource.state }} {{ resource.zip_code }}</p>
+                    </a>
 
                     <p class="card-text">Verified: {{ resource.verified }}</p>
                     <p class="card-text mt-5">Description: {{ resource.description }}</p>
