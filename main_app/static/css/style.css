@@ -52,6 +52,10 @@ body {
     padding: 12px 12px;
 }
 
+#dropdownMenuButton {
+    width: 167px;
+}
+
 a,
 a.card,
 a.card:hover {

@@ -3,42 +3,35 @@
 {% block content %}
 
 <h1 class="mt-5">Resources</h1>
-<p class="lead">Community Resources! <button class="btn btn-primary" id="getUserButton">Find Near Me</button></p>
+<p class="lead">Community Resources!</p>
 
-
-{% comment %} {{resource_query}} {% endcomment %}
-{% comment %} REVIEW: left off here, attempting to add dropdown meny that filters using query params / django url config {% endcomment %}
-<div class="dropdown">
-    <span class="lead">I am looking for...</span> 
-    <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">{{resource_query}}</button>
-    <ul name="resource_type" id="id_resource_type" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li><a class="dropdown-item" href="{% url 'resources_index' %}">All Resources</a></li>
-        <li><a class="dropdown-item" href="?resource_type=Healthcare">Healthcare</a></li>
-        <li><a class="dropdown-item" href="?resource_type=Housing/Shelter">Housing/Shelter</a></li>
-        <li><a class="dropdown-item" href="?resource_type=Food">Food</a></li>
-        <li><a class="dropdown-item" href="?resource_type=Employment">Employment</a></li>
-        <li><a class="dropdown-item" href="?resource_type=Education">Education</a></li>
-        <li><a class="dropdown-item" href="?resource_type=Utility/Financial">Utility/Financial</a></li>
-        <li><a class="dropdown-item" href="?resource_type=Transportaion">Transportaion</a></li>
-        <li><a class="dropdown-item" href="?resource_type=Disability">Disability</a></li>
-        <li><a class="dropdown-item" href="?resource_type=Domestic Violence">Domestic Violence</a></li>
-    </ul>
-</div>
-
-{% comment %} REVIEW: Other styling {% endcomment %}
-{% comment %} <select name="resource_type" id="id_resource_type">
-    <option value="HEAL" selected="">Healthcare</option>
-    <option value="HOUS">Housing/Shelter</option>
-    <option value="FOOD">Food</option>
-    <option value="EMPL">Employment</option>
-    <option value="EDUC">Education</option>
-    <option value="UTIL">Utility/Financial</option>
-    <option value="TRAN">Transportaion</option>
-    <option value="DISA">Disability</option>
-    <option value="DOME">Domestic Violence</option>
-</select> {% endcomment %}
 
 <div class="container">
+    <div class="row justify-content-md-center text-center mb-4">
+        <div class="col">
+                {% comment %} REVIEW: default/all resources/none shown? {% endcomment %}
+                <div class="dropdown">
+                    <span class="lead">I am looking for...</span> 
+                    <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">{{resource_query}}</button>
+                    <ul name="resource_type" id="id_resource_type" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="{% url 'resources_index' %}">All Resources</a></li>
+                        <li><a class="dropdown-item" href="?resource_type=Healthcare">Healthcare</a></li>
+                        <li><a class="dropdown-item" href="?resource_type=Housing/Shelter">Housing/Shelter</a></li>
+                        <li><a class="dropdown-item" href="?resource_type=Food">Food</a></li>
+                        <li><a class="dropdown-item" href="?resource_type=Employment">Employment</a></li>
+                        <li><a class="dropdown-item" href="?resource_type=Education">Education</a></li>
+                        <li><a class="dropdown-item" href="?resource_type=Utility/Financial">Utility/Financial</a></li>
+                        <li><a class="dropdown-item" href="?resource_type=Transportaion">Transportaion</a></li>
+                        <li><a class="dropdown-item" href="?resource_type=Disability">Disability</a></li>
+                        <li><a class="dropdown-item" href="?resource_type=Domestic Violence">Domestic Violence</a></li>
+                    </ul>
+                    
+                    <button class="btn btn-primary" id="getUserButton"><i class="fas fa-crosshairs"></i> Map My Location</button>
+                </div>
+        </div>
+    </div>
+
+
     <div class="row">
         {% comment %} Column 1 of 2 {% endcomment %}
         <div class="col-md-6">

@@ -3,9 +3,13 @@
 {% block content %}
 
 <h1 class="mt-5">Resource Details</h1>
-<p class="lead">Community Resources! <button class="btn btn-primary" id="getUserButton">Find Near Me</button></p>
-
+<p class="lead">Community Resources!</p>
 <div class="container">
+    <div class="row">
+        <div class="col mb-4">
+            <button class="btn btn-primary" id="getUserButton"><i class="fas fa-crosshairs"></i> Map My Location</button>
+        </div>
+    </div>
     <div class="row">
         {% comment %} Column 1 of 2 {% endcomment %}
         <div class="col-md-6">
