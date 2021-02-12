@@ -30,6 +30,15 @@ i.fas, i.far {
     display: block;
 }
 
+.about-card {
+    padding: 0 !important;
+}
+
+.about-img {
+    padding: 4px;
+    border-radius: 8px;
+}
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
