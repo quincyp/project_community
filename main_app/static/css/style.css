@@ -26,6 +26,19 @@ i.fas, i.far {
     display:inline-block; /* chrome-fix */
 }
 
+.drop-li-hover:hover .dropdown-menu{
+    display: block;
+}
+
+.about-card {
+    padding: 0 !important;
+}
+
+.about-img {
+    padding: 4px;
+    border-radius: 8px;
+}
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
