@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="mt-5">Home Test</h1>
-<p class="lead">Community Resources!</p>
+    <h1 class="mt-5">Home</h1>
+    {% comment %} <p class="lead">Community Resources!</p> {% endcomment %}
+    
+    <div class="row">
+        <div class="col">
+            <h2 class="mt-5">Project Community is a social services / community resources application with the goal of helping people find resources nearby.<h1>
+        </div>
+    <div class="row mt-5">
+        <div class="col text-center">
+            <a href="{% url 'resources_index' %}"><button class="btn btn-primary btn-lg"><i class="fas fa-search-location"></i> Find Resources Now</button></a>
+        </div>
+    </div>
+
 {% endblock %}

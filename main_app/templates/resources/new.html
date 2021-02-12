@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="mt-5">Add New Resource</h1>
+<p class="lead">Community Resources!</p>
+
+
+<div class="card w-70">
+    <div class="card-body">
+        <form action="/resources/" method="POST">
+            {% csrf_token %}
+            <table>
+                <tbody>
+                    <tr>
+                        <th><label for="id_resource_type"><i class="fas fa-briefcase-medical"></i> Resource Type:</label></th>
+                        <td><select name="resource_type" id="id_resource_type">
+                                <option value="HEAL" selected="">Healthcare</option>
+                                <option value="HOUS">Housing/Shelter</option>
+                                <option value="FOOD">Food</option>
+                                <option value="EMPL">Employment</option>
+                                <option value="EDUC">Education</option>
+                                <option value="UTIL">Utility/Financial</option>
+                                <option value="TRAN">Transportaion</option>
+                                <option value="DISA">Disability</option>
+                                <option value="DOME">Domestic Violence</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+                        <th><label for="id_name"><i class="far fa-address-card"></i> Resource Name:</label></th>
+                        <td><input type="text" name="name" maxlength="120" required="" id="id_name" placeholder="Name"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="id_address1"><i class="fas fa-map-marker-alt"></i> Address:</label></th>
+                        <td><input type="text" name="address1" maxlength="120" id="id_address1" placeholder="Address Line 1"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="id_address2"></label></th>
+                        <td><input type="text" name="address2" maxlength="120" id="id_address2" placeholder="Address Line 2"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="id_address3"></label></th>
+                        <td><input type="text" name="address3" maxlength="120" id="id_address3" placeholder="Address Line 3"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="id_city">City:</label></th>
+                        <td><input type="text" name="city" maxlength="120" id="id_city" placeholder="City"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="id_state">State:</label></th>
+                        <td><input type="text" name="state" maxlength="2" id="id_state" placeholder="State"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="id_zip_code">Zip Code:</label></th>
+                        <td><input type="text" name="zip_code" maxlength="5" id="id_zip_code" placeholder="Zip Code"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="id_phone"><i class="fas fa-phone-alt"></i> Phone:</label></th>
+                        <td><input type="text" name="phone" maxlength="12" id="id_phone" placeholder="Phone Number"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="id_website"><i class="fas fa-globe-americas"></i> Website:</label></th>
+                        <td><input type="text" name="website" maxlength="512" id="id_website" placeholder="Website"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="id_description"><i class="fas fa-align-justify"></i> Description:</label></th>
+                        <td><input type="text" name="description" maxlength="1024" required="" id="id_description" placeholder="Description"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="card-footer text-center">
+                <button class="btn btn-primary" type="submit"><i class="fas fa-plus-square"></i> Add Resource</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

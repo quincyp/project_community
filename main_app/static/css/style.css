@@ -4,6 +4,13 @@ body {
 } 
 */
 
+:root {
+    --set-size: 1;
+}
+body {
+    font-size: calc(100% * var(--set-size));
+}
+
 
 main > .container {
     padding: 60px 15px 0;
@@ -13,6 +20,23 @@ main > .container {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+i.fas, i.far {
+    display:inline-block; /* chrome-fix */
+}
+
+.drop-li-hover:hover .dropdown-menu{
+    display: block;
+}
+
+.about-card {
+    padding: 0 !important;
+}
+
+.about-img {
+    padding: 4px;
+    border-radius: 8px;
 }
 
 .bd-placeholder-img {
@@ -27,4 +51,83 @@ main > .container {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
     }
+}
+
+/* Removes google translate banner */
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+} 
+/* Adjusts google translate element dropdown */
+.goog-te-gadget .goog-te-combo {
+    margin: 4px 0;
+    width: 205px;
+}
+/* Gets rid of google translate frame pushing content down */
+body {
+    top: 0px !important; 
+}
+
+#map {
+    height: 520px;
+    width: 100%;
+}
+
+.icon-pad {
+    padding: 12px 12px;
+}
+
+#dropdownMenuButton {
+    width: 167px;
+}
+
+#copyTarget:hover {
+    cursor: pointer;
+}
+
+a,
+a.card,
+a.card:hover {
+    color: #212529;
+    text-decoration: none;
+}
+
+.card-footer {
+    background-color: inherit;
+    padding: 1.5rem 0 0 0;
+}
+
+.card{
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform ease-in-out;
+    padding: 14px 80px 18px 36px;
+}
+
+.cards_list.card:hover{
+    cursor: pointer;
+    transform: scale(1.01) translateX(-1.1rem);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    background: #f1f1f1;
+}
+
+table, th, td {
+    padding: 1.5%;
+    /* border: 1px solid red; */
+    text-align: left;
+}
+
+table {
+    width: 80%;
+}
+
+input[type=text], select {
+    width: 100%;
+    /* padding: 12px 20px; */
+    margin: 6px 0;
+    box-sizing: border-box;
+} 
+
+select { 
+    height: 2rem;
 }

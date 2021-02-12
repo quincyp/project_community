@@ -16,10 +16,25 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
     {% comment %} Custom CSS {% endcomment %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" defer>
+
+    {% comment %} jQuery JS{% endcomment %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    {% comment %} JS Cookie {% endcomment %}
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
     {% comment %} Bootstrap JS {% endcomment %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    {% comment %} Custom JS {% endcomment %}
+    <script src="{% static 'js/translate.js' %}" defer></script>
+    <script src="{% static 'js/maps.js' %}" defer></script>
+    <script src="{% static 'js/scripts.js' %}" defer></script>
+    
+    {% comment %} Google Translate Element JS {% endcomment %}
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    {% comment %} <script src="{% static 'js/maps.js' %}" defer></script> {% endcomment %}
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -28,30 +43,60 @@
         {% comment %} FIXED NAVBAR {% endcomment %}
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/"><i class="fas fa-search-location"></i> Project Community</a>
+                <a class="navbar-brand" href="/"><i class="fas fa-lg fa-search-location"></i> Project Community</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                    {% comment %} NAVBAR ITEMS LEFT {% endcomment %}
+                    {% comment %} NAVBAR ITEMS --- LEFT {% endcomment %}
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/">Home</a>
+                            <a class="nav-link" href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/about">About</a>
+                            <a class="nav-link" href="{% url 'about' %}">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'resources_index' %}">Resources</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'resources_new' %}">Add New</a>
                         </li>
 
                     </ul>
 
-                    {% comment %} NAVBAR ITEMS RIGHT {% endcomment %}
+
+                    {% comment %} NAVBAR ITEMS --- RIGHT {% endcomment %}
                     <ul class="navbar-nav ms-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-text-height"></i></a>
+                        <li class="nav-item dropdown drop-li-hover mt-1 dropdown-stay">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-text-height"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item btn-group" role="group" href="#">
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-dark" id="zoomMinus"><i class="fas fa-search-minus"></i></button>
+                                        <button class="btn btn-dark" id="zoomReset"><i class="fas fa-sm fa-sync-alt"></i></i></button>
+                                        <button class="btn btn-dark" id="zoomPlus"><i class="fas fa-search-plus"></i></button>
+                                    </div>
+                                </a></li>
+                            </ul>
                         </li>
+                        
+
+                        <li class="nav-item dropdown drop-li-hover mt-1 dropdown-stay">
+                            <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-language"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li class="dropdown" role="group">
+                                    <h5><a class="dropdown-item disabled" href="#" aria-disabled="true">Selecting Language</a></h5>
+                                    <li><a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Translation may take a moment to process</a></li>
+                                </li>
+                            </ul>
+                        </li>                            
+
+
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-language"></i></a>
+                            <div id="google_translate_element"></div>
+
                         </li>
                     </ul>
 
@@ -73,11 +118,11 @@
         </div>
     </main>
 
-    <footer class="footer mt-auto py-3 bg-light">
+    {% comment %} <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
             <span class="text-muted">All Rights Reserved, &copy; 2021 Project Community created by Quincy Pham</span>
         </div>
-    </footer>
+    </footer> {% endcomment %}
 </body>
 
 
