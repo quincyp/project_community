@@ -54,15 +54,19 @@
                         <p class="card-subtitle my-2 text-muted"><i class="fas fa-sm fa-phone-alt"></i> Phone Unknown</p>
                     {% endif %}
                     
+                    {% if resource.address1 %}
                     <a href="https://www.google.com/maps?q={{resource.name}} {{resource.address1}} {{ resource.city }} {{ resource.state }} {{ resource.zip_code }}" target="_blank">
                         <p class="card-subtitle my-1"><i class="fas fa-map-marker-alt"></i> {{ resource.address1 }}</p>
                         <p class="card-subtitle mb-1">{{ resource.address2 }}</p>
                         <p class="card-subtitle mb-1">{{ resource.address3 }}</p>
                         <p class="card-subtitle mb-4">{{ resource.city }} {{ resource.state }} {{ resource.zip_code }}</p>
                     </a>
+                    {% else %}
+                        <p class="card-subtitle my-1 text-muted"><i class="fas fa-map-marker-alt"></i> Address Unknown</p>
+                    {% endif %}
 
                     <p class="card-text">Verified: {{ resource.verified }}</p>
-                    <p class="card-text mt-5">Description: {{ resource.description }}</p>
+                    <p class="card-text"> {{ resource.description }}</p>
 
                     <div class="card-footer text-center">
                         Not up to date? <a href="/resources/{{resource.id}}/edit" class="btn btn-primary"><i class="fas fa-edit"></i> Update</a>
