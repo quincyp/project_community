@@ -27,7 +27,7 @@
                 <span class="lead">I am looking for...</span> 
                 <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">{{resource_query}}</button>
                 <ul name="resource_type" id="id_resource_type" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" href="{% url 'resources_index' %}">All Resources</a></li>
+                    {% comment %} <li><a class="dropdown-item" href="{% url 'resources_index' %}">Select Resources</a></li> {% endcomment %}
                     <li><a class="dropdown-item" href="?resource_type=Healthcare">Healthcare</a></li>
                     <li><a class="dropdown-item" href="?resource_type=Housing/Shelter">Housing/Shelter</a></li>
                     <li><a class="dropdown-item" href="?resource_type=Food">Food</a></li>
