@@ -21,7 +21,7 @@ function initMap(position) {
     
     // The map, centered at user location
     const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 13,
+        zoom: 10,
         center: position,
     });
 

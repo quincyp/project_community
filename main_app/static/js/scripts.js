@@ -32,20 +32,26 @@ $("#zoomReset").on("click", function() {
 
 // Script for bootstrap popovers
 
-// let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-// let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-//     return new bootstrap.Popover(popoverTriggerEl)
-// });
+let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl)
+});
 
-// $(document).ready(function() {
-//     $("i.fas").popover({'trigger':'hover'});
-//     $("i.far").popover({'trigger':'hover'});
-// });
+$(document).ready(function() {
+    $("i.fas").popover({'trigger':'hover'});
+    $("i.far").popover({'trigger':'hover'});
+});
 
 let popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
     trigger: 'hover'
 });
 
+
+// Keep sizing dropdown menu open
+$(document).on('click', '.dropdown-stay', function (e) {
+    console.log('propogate');
+    e.stopPropagation();
+});
 
 // Copy to clipboard
 function clipboardCopy() {

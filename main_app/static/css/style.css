@@ -26,6 +26,10 @@ i.fas, i.far {
     display:inline-block; /* chrome-fix */
 }
 
+.drop-li-hover:hover .dropdown-menu{
+    display: block;
+}
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
