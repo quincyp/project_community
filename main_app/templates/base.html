@@ -21,6 +21,9 @@
     {% comment %} jQuery JS{% endcomment %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    {% comment %} JS Cookie {% endcomment %}
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
     {% comment %} Bootstrap JS {% endcomment %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
@@ -66,13 +69,43 @@
 
                     {% comment %} NAVBAR ITEMS --- RIGHT {% endcomment %}
                     <ul class="navbar-nav ms-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fas fa-text-height"></i></a>
+                        <li class="nav-item dropdown mt-1">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-text-height"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li><a class="dropdown-item btn-group" role="group" href="#">
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-dark" id="zoomMinus"><i class="fas fa-search-minus"></i></button>
+                                        <button class="btn btn-dark" id="zoomReset"><i class="fas fa-sm fa-sync-alt"></i></i></button>
+                                        <button class="btn btn-dark" id="zoomPlus"><i class="fas fa-search-plus"></i></button>
+                                    </div>
+                                </a></li>
+                            </ul>
                         </li>
+{% comment %} 
                         <li class="nav-item">
-                            <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="Translation may take a moment to process on load for each page" title="Selecting Language">
-                                <i class="nav-link fas fa-language icon-pad"></i>
+                            <button type="button" class="btn btn-dark" data-bs-toggle="popover" 
+                                data-bs-placement="bottom"
+                                title="Popover title" 
+                                data-bs-content="And here's">
+                            <i class="nav-link fas fa-text-height"></i>
+                            </button>
+                        </li>
+
+                        <li class="nav-item">
+                            <span class="d-inline-block popover-dismiss" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Disabled popover">
+                                <button class="btn btn-dark" type="button"><i class="nav-link fas fa-language icon-pad"></i></button>
                             </span>
+                        </li>
+ {% endcomment %}
+                        
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-dark popover-dismiss" data-bs-toggle="popover" 
+                                data-bs-placement="bottom" 
+                                data-bs-trigger="hover" 
+                                title="Selecting Language"
+                                data-bs-content="Translation may take a moment to process on load for each page">
+                            <i class="nav-link fas fa-language"></i>
+                            </button>
                         </li>
                         <li class="nav-item">
                             <div id="google_translate_element"></div>

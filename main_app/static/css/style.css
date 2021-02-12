@@ -4,6 +4,13 @@ body {
 } 
 */
 
+:root {
+    --set-size: 1;
+}
+body {
+    font-size: calc(100% * var(--set-size));
+}
+
 
 main > .container {
     padding: 60px 15px 0;
@@ -13,6 +20,10 @@ main > .container {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+i.fas, i.far {
+    display:inline-block; /* chrome-fix */
 }
 
 .bd-placeholder-img {
