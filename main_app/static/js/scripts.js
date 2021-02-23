@@ -1,3 +1,8 @@
+// Keep sizing dropdown menu open
+$('.dropdown-stay').on('click', function (e) {
+    console.log('propogate');
+    e.stopPropagation();
+});
 
 // Get and Set the font size from the cookie on load
 let size = 1;
@@ -50,11 +55,7 @@ let popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), 
 });
 
 
-// Keep sizing dropdown menu open
-$(document).on('click', '.dropdown-stay', function (e) {
-    console.log('propogate');
-    e.stopPropagation();
-});
+
 
 // Copy to clipboard
 function clipboardCopy() {
