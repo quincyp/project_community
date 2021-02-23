@@ -9,12 +9,14 @@
         <div class="col mb-4">
             <button
                 class="btn btn-primary" 
+                {% comment %}Popover messsage previously here                 
                 tabindex="0" 
                 data-bs-toggle="popover" 
                 data-bs-trigger="focus" 
                 data-bs-placement="bottom" 
                 title="Locate (Permission Required)" 
                 data-bs-content="Locate may take a moment to process" 
+                {% endcomment %}
                 id="getUserButton"
                 style="display:inline"
                 >
@@ -23,7 +25,7 @@
 
             <button class="btn btn-primary" type="button" id="mapLoadButton" style="display:none" disabled>
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                Loading Location...
+                Loading Location
             </button>
         </div>
     </div>
