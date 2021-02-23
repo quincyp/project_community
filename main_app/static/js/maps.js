@@ -15,6 +15,18 @@ initMap(seattle);
 
 
 function initMap(position) {
+    const getUserButton = document.getElementById("getUserButton");
+    const mapLoadButton = document.getElementById("mapLoadButton");
+    
+    function showLoading() {
+        getUserButton.setAttribute("style", "display:none");
+        mapLoadButton.setAttribute("style", "display:inline");
+    }
+    
+    function showMapButton() {
+        getUserButton.setAttribute("style", "display:inline");
+        mapLoadButton.setAttribute("style", "display:none");
+    }
     geocoder = new google.maps.Geocoder();
     
     
@@ -58,13 +70,18 @@ function initMap(position) {
         userMarker.addListener("click", () => {
             infowindow.open(map, userMarker);
         });
+
+        showMapButton();
     };
-    const error = (error) => console.log(error);
+    const error = (error) => { 
+        console.log(error);
+        showMapButton();
+    };
 
     // Gets the current user location on click
-    const getUserButton = document.getElementById("getUserButton");
     getUserButton.addEventListener("click", () => {
         console.log("click");
+        showLoading();
         navigator.geolocation.getCurrentPosition(success, error, {maximumAge:1000, timeout:5000, enableHighAccuracy:true});
     });
 
