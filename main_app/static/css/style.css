@@ -7,6 +7,8 @@ body {
 :root {
     --set-size: 1;
 }
+
+/* Accessibility Zoom Implemented here and tied to js handler/listener with --set-size variable */
 html {
     font-size: calc(100% * var(--set-size));
 }
