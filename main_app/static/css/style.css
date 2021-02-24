@@ -23,7 +23,11 @@ main > .container {
 }
 
 i.fas, i.far {
-    display:inline-block; /* chrome-fix */
+    display: inline-block; /* chrome-fix */
+}
+
+.fa-hidden {
+    visibility: hidden !important;
 }
 
 /* .drop-li-hover:hover .dropdown-menu{
