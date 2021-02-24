@@ -8,7 +8,7 @@
 
 <div class="card w-70">
     <div class="card-body">
-        <form action="/resources/" method="POST">
+        <form action="/resources/" method="POST" class="needs-validation" novalidate>
             {% csrf_token %}
             <div class="row">
                 <div class="col">
@@ -32,8 +32,9 @@
             <div class="row">
                 <div class="col">
                     <div class="form-floating mb-5">
-                        <input type="text" class="form-control" id="floatingInput" name="name" maxlength="120" id="id_name" placeholder="Name">
+                        <input type="text" class="form-control" id="floatingInput" name="name" maxlength="120" id="id_name" placeholder="Name" required>
                         <label for="floatingInput"><i class="far fa-address-card"></i> Resource Name</label>
+                        <div class="invalid-feedback">Resource Name is required</div>
                     </div>
                 </div>
             </div>
@@ -51,7 +52,7 @@
                 <div class="col">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingInput" name="address2" maxlength="120" id="id_address2" placeholder="Address Line 2">
-                        <label for="floatingInput"><i class="fas fa-map-marker-alt"></i> Address Line 2</label>
+                        <label for="floatingInput"><i class="fas fa-map-marker-alt fa-hidden"></i> Address Line 2</label>
                     </div>
                 </div>
             </div>
@@ -60,27 +61,27 @@
                 <div class="col">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingInput" name="address3" maxlength="120" id="id_address3" placeholder="Address Line 3">
-                        <label for="floatingInput"><i class="fas fa-map-marker-alt"></i> Address Line 3</label>
+                        <label for="floatingInput"><i class="fas fa-map-marker-alt fa-hidden"></i> Address Line 3</label>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-6">
+                <div class="col-sm-6">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingInput" name="city" maxlength="120" id="id_city" placeholder="City">
                         <label for="floatingInput">City</label>
                     </div>
                 </div>
 
-                <div class="col-3">
+                <div class="col-sm-3">
                     <div class="form-floating mb-5">
                         <input type="text" class="form-control" id="floatingInput" name="state" maxlength="2" id="id_state" placeholder="State">
                         <label for="floatingInput">State</label>
                     </div>
                 </div>
 
-                <div class="col-3">
+                <div class="col-sm-3">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingInput" name="zip" maxlength="5" id="id_zip" placeholder="Zip">
                         <label for="floatingInput">Zip</label>
@@ -109,8 +110,9 @@
             <div class="row">
                 <div class="col">
                     <div class="form-floating mb-3">
-                        <textarea class="form-control" id="floatingTextarea" name="description" maxlength="1024" id="id_description" placeholder="Description" style="height: 128px"></textarea>
+                        <textarea class="form-control" id="floatingTextarea" name="description" maxlength="1024" id="id_description" placeholder="Description" style="height: 128px" required></textarea>
                         <label for="floatingInput"><i class="fas fa-align-justify"></i> Description</label>
+                        <div class="invalid-feedback">Description is required</div>
                     </div>
                 </div>
             </div>
