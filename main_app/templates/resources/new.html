@@ -14,8 +14,10 @@
             <div class="row">
                 <div class="col">
                     <div class="form-floating">
-                        <select class="form-select" name="resource_type" id="id_resource_type">
-                            <option value="HEAL" selected="">Healthcare</option>
+                        <select class="form-select" name="resource_type" id="id_resource_type" required>
+                            <option value="" selected disabled>Select Resource Type</option>
+
+                            <option value="HEAL">Healthcare</option>
                             <option value="HOUS">Housing/Shelter</option>
                             <option value="FOOD">Food</option>
                             <option value="EMPL">Employment</option>
@@ -119,17 +121,6 @@
                     </div>
                 </div>
             </div>
-
-            {% comment %} <div class="input-group input-group-lg mb-3">
-                <span class="input-group-text" id="basic-addon1"><i class="far fa-address-card"></i> </span>
-                
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-
-                <div class="input-group">
-                <span class="input-group-text">With textarea</span>
-                <textarea class="form-control" aria-label="With textarea"></textarea>
-            </div> {% endcomment %}
 
             {% comment %} <table>
                 <tbody>
