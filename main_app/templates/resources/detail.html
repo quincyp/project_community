@@ -8,15 +8,24 @@
     <div class="row">
         <div class="col mb-4">
             <button
-                class="btn btn-primary d-inline-block" 
+                class="btn btn-primary" 
+                {% comment %}Popover messsage previously here                 
                 tabindex="0" 
                 data-bs-toggle="popover" 
                 data-bs-trigger="focus" 
                 data-bs-placement="bottom" 
                 title="Locate (Permission Required)" 
                 data-bs-content="Locate may take a moment to process" 
-                id="getUserButton">
+                {% endcomment %}
+                id="getUserButton"
+                style="display:inline"
+                >
                 <i class="fas fa-crosshairs"></i> Map My Location
+            </button>
+
+            <button class="btn btn-primary" type="button" id="mapLoadButton" style="display:none" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading Location
             </button>
         </div>
     </div>
@@ -38,7 +47,7 @@
             <div class="card w-100">
                 <div class="card-body">
                     {% if resource.website %}
-                        {% comment %} REVIEW: this section for http at some point {% endcomment %}
+                        {% comment %} this section for http at some point {% endcomment %}
                         <a href="http://{{ resource.website }}" target="_blank">
                             <h4 class="card-title"><i class="fas fa-globe-americas"></i> {{ resource.name }}</h4>
                         </a>

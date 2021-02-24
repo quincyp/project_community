@@ -26,8 +26,17 @@ i.fas, i.far {
     display:inline-block; /* chrome-fix */
 }
 
-.drop-li-hover:hover .dropdown-menu{
+/* .drop-li-hover:hover .dropdown-menu{
     display: block;
+} */
+
+/* Hides powered by google translate, makes space on navbar */
+.goog-logo-link {
+    display:none !important;
+} 
+    
+.goog-te-gadget{
+    color: transparent !important;
 }
 
 .about-card {
