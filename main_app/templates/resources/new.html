@@ -10,7 +10,123 @@
     <div class="card-body">
         <form action="/resources/" method="POST">
             {% csrf_token %}
-            <table>
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating">
+                        <select class="form-select" name="resource_type" id="id_resource_type">
+                            <option value="HEAL" selected="">Healthcare</option>
+                            <option value="HOUS">Housing/Shelter</option>
+                            <option value="FOOD">Food</option>
+                            <option value="EMPL">Employment</option>
+                            <option value="EDUC">Education</option>
+                            <option value="UTIL">Utility/Financial</option>
+                            <option value="TRAN">Transportaion</option>
+                            <option value="DISA">Disability</option>
+                            <option value="DOME">Domestic Violence</option>
+                        </select>
+                        <label for="floatingSelect"><i class="fas fa-briefcase-medical"></i> Resource Type</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="name" maxlength="120" id="id_address1" placeholder="Name">
+                        <label for="floatingInput"><i class="far fa-address-card"></i> Resource Name</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="address1" maxlength="120" id="id_address1" placeholder="Address Line 1">
+                        <label for="floatingInput"><i class="fas fa-map-marker-alt"></i> Address Line 1</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="address1" maxlength="120" id="id_address2" placeholder="Address Line 2">
+                        <label for="floatingInput"><i class="fas fa-map-marker-alt"></i> Address Line 2</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="address3" maxlength="120" id="id_address1" placeholder="Address Line 3">
+                        <label for="floatingInput"><i class="fas fa-map-marker-alt"></i> Address Line 3</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="city" maxlength="120" id="id_city" placeholder="City">
+                        <label for="floatingInput">City</label>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="state" maxlength="2" id="id_state" placeholder="State">
+                        <label for="floatingInput">State</label>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="zip" maxlength="5" id="id_zip" placeholder="Zip">
+                        <label for="floatingInput">Zip</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="phone" maxlength="12" id="id_phone" placeholder="Phone">
+                        <label for="floatingInput"><i class="fas fa-phone-alt"></i> Phone</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="website" maxlength="512" id="id_website" placeholder="Website">
+                        <label for="floatingInput"><i class="fas fa-globe-americas"></i> Website</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="floatingTextarea" name="description" maxlength="1024" id="id_description" placeholder="Description" style="height: 100px"></textarea>
+                        <label for="floatingInput"><i class="fas fa-align-justify"></i> Description</label>
+                    </div>
+                </div>
+            </div>
+
+            {% comment %} <div class="input-group input-group-lg mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="far fa-address-card"></i> </span>
+                
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group">
+                <span class="input-group-text">With textarea</span>
+                <textarea class="form-control" aria-label="With textarea"></textarea>
+            </div> {% endcomment %}
+
+            {% comment %} <table>
                 <tbody>
                     <tr>
                         <th><label for="id_resource_type"><i class="fas fa-briefcase-medical"></i> Resource Type:</label></th>
@@ -67,7 +183,7 @@
                         <td><input type="text" name="description" maxlength="1024" required="" id="id_description" placeholder="Description"></td>
                     </tr>
                 </tbody>
-            </table>
+            </table> {% endcomment %}
 
             <div class="card-footer text-center">
                 <button class="btn btn-primary" type="submit"><i class="fas fa-plus-square"></i> Add Resource</button>
