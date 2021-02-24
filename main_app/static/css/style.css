@@ -7,7 +7,7 @@ body {
 :root {
     --set-size: 1;
 }
-body {
+html {
     font-size: calc(100% * var(--set-size));
 }
 
@@ -89,9 +89,6 @@ body {
     padding: 12px 12px;
 }
 
-#dropdownMenuButton {
-    width: 167px;
-}
 
 #copyTarget:hover {
     cursor: pointer;
