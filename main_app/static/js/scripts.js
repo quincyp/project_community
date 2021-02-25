@@ -19,7 +19,6 @@
 
 // Keep sizing dropdown menu open
 $('.dropdown-stay').on('click', function (e) {
-    console.log('propogate');
     e.stopPropagation();
 });
 
@@ -27,7 +26,7 @@ $('.dropdown-stay').on('click', function (e) {
 let size = 1;
 size = parseFloat(Cookies.get('size'));
 document.documentElement.setAttribute("style", `--set-size: ${size}`);
-console.log(size);
+console.log("Size: " + size);
 
 // Accessibility text magnifier
 $("#zoomMinus").on("click", function(){
@@ -47,7 +46,6 @@ const setZoom = function setZoom(choice) {
         }
     } else if (choice === "plus") {
         if(size < 1.8) {
-            console.log("text");
             size += .2;
         }
     } else {
