@@ -25,7 +25,7 @@ $('.dropdown-stay').on('click', function (e) {
 
 // Get and Set the font size from the cookie on load
 let size = 1;
-size = Cookies.get('size');
+size = parseFloat(Cookies.get('size'));
 document.documentElement.setAttribute("style", `--set-size: ${size}`);
 console.log(size);
 
@@ -47,6 +47,7 @@ const setZoom = function setZoom(choice) {
         }
     } else if (choice === "plus") {
         if(size < 1.8) {
+            console.log("text");
             size += .2;
         }
     } else {
