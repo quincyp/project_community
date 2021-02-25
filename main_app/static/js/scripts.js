@@ -69,10 +69,6 @@ $(document).ready(function() {
     $("i.far").popover({'trigger':'hover'});
 });
 
-let popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
-    trigger: 'hover'
-});
-
 
 
 
