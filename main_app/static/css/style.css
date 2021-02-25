@@ -7,7 +7,9 @@ body {
 :root {
     --set-size: 1;
 }
-body {
+
+/* Accessibility Zoom Implemented here and tied to js handler/listener with --set-size variable */
+html {
     font-size: calc(100% * var(--set-size));
 }
 
@@ -89,9 +91,6 @@ body {
     padding: 12px 12px;
 }
 
-#dropdownMenuButton {
-    width: 167px;
-}
 
 #copyTarget:hover {
     cursor: pointer;

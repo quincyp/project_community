@@ -29,7 +29,7 @@
 
     {% comment %} Custom JS {% endcomment %}
     <script src="{% static 'js/translate.js' %}" defer></script>
-    <script src="{% static 'js/maps.js' %}" defer></script>
+    {% comment %} <script src="{% static 'js/maps.js' %}" defer></script> {% endcomment %}
     <script src="{% static 'js/scripts.js' %}" defer></script>
     
     {% comment %} Google Translate Element JS {% endcomment %}
@@ -111,7 +111,7 @@
     </header>
 
     <main class="flex-shrink-0">
-        <div class="container">
+        <div class="container vh-100">
             {% comment %} BLOCK CONTENT HERE {% endcomment %}
             {% block content %}
             {% endblock %}
