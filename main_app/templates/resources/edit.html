@@ -3,10 +3,8 @@
 {% block content %}
 
 <h1 class="mt-5">Edit Resource</h1>
-<p class="lead">Community Resources!</p>
 
-
-<div class="card w-70">
+<div class="card w-70 mt-3">
     <div class="card-body">
         <form action="/resources/{{resource.id}}/edit" method="POST" class="needs-validation" novalidate>
             {% csrf_token %}
