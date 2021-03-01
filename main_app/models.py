@@ -25,7 +25,7 @@ class Resource(models.Model):
         ('EMPL', 'Employment'),
         ('EDUC', 'Education'),
         ('UTIL', 'Utility/Financial'),
-        ('TRAN', 'Transportaion'),
+        ('TRAN', 'Transportation'),
         ('DISA', 'Disability'),
         ('DOME', 'Domestic Violence'),
     ]

@@ -3,14 +3,123 @@
 {% block content %}
 
 <h1 class="mt-5">Edit Resource</h1>
-<p class="lead">Community Resources!</p>
 
-
-<div class="card w-70">
+<div class="card w-70 mt-3">
     <div class="card-body">
-        <form action="/resources/{{resource.id}}/edit" method="POST">
+        <form action="/resources/{{resource.id}}/edit" method="POST" class="needs-validation" novalidate>
             {% csrf_token %}
-            <table>
+            <h4><i class="fas fa-hand-holding-medical"></i> Resource</h4>
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating">
+                        <select class="form-select" name="resource_type" id="id_resource_type" value="this">
+                            {% comment %} <option value="" selected disabled>Select Resource Type</option> {% endcomment %}
+                            <option value="HEAL" {% if "HEAL" == resource.resource_type %} selected {% endif %}>Healthcare</option>
+                            <option value="HOUS" {% if "HOUS" == resource.resource_type %} selected {% endif %}>Housing/Shelter</option>
+                            <option value="FOOD" {% if "FOOD" == resource.resource_type %} selected {% endif %}>Food</option>
+                            <option value="EMPL" {% if "EMPL" == resource.resource_type %} selected {% endif %}>Employment</option>
+                            <option value="EDUC" {% if "EDUC" == resource.resource_type %} selected {% endif %}>Education</option>
+                            <option value="UTIL" {% if "UTIL" == resource.resource_type %} selected {% endif %}>Utility/Financial</option>
+                            <option value="TRAN" {% if "TRAN" == resource.resource_type %} selected {% endif %}>Transportation</option>
+                            <option value="DISA" {% if "DISA" == resource.resource_type %} selected {% endif %}>Disability</option>
+                            <option value="DOME" {% if "DOME" == resource.resource_type %} selected {% endif %}>Domestic Violence</option>
+                        </select>
+                        <label for="floatingSelect"><i class="fas fa-briefcase-medical"></i> Resource Type</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-5">
+                        <input type="text" class="form-control" name="name" maxlength="120" id="id_name" placeholder="Name" value="{{resource.name}}" required>
+                        <label for="floatingInput"><i class="far fa-address-card"></i> Resource Name</label>
+                        <div class="invalid-feedback">Resource Name is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <h4><i class="fas fa-map-marker-alt"></i> Address</h4>
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating my-3">
+                        <input type="text" class="form-control" name="address1" maxlength="120" id="id_address1" placeholder="Address Line 1" value="{{resource.address1}}">
+                        <label for="floatingInput">Address Line 1</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="address2" maxlength="120" id="id_address2" placeholder="Address Line 2" value="{{resource.address2}}">
+                        <label for="floatingInput">Address Line 2</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="address3" maxlength="120" id="id_address3" placeholder="Address Line 3" value="{{resource.address3}}">
+                        <label for="floatingInput">Address Line 3</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="city" maxlength="120" id="id_city" placeholder="City" value="{{resource.city}}">
+                        <label for="floatingInput">City</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-floating mb-5">
+                        <input type="text" class="form-control" name="state" maxlength="2" id="id_state" placeholder="State" value="{{resource.state}}">
+                        <label for="floatingInput">State</label>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="zip" maxlength="5" id="id_zip" placeholder="Zip" value="{{resource.zip_code}}">
+                        <label for="floatingInput">Zip</label>
+                    </div>
+                </div>
+            </div>
+
+            <h4><i class="fas fa-info-circle"></i> Contact / Information</h4>
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating my-3">
+                        <input type="text" class="form-control" name="phone" maxlength="12" id="id_phone" placeholder="Phone" value="{{resource.phone}}">
+                        <label for="floatingInput"><i class="fas fa-phone-alt"></i> Phone</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" name="website" maxlength="512" id="id_website" placeholder="Website" value="{{resource.website}}">
+                        <label for="floatingInput"><i class="fas fa-globe-americas"></i> Website</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="floatingTextarea" name="description" maxlength="1024" id="id_description" placeholder="Description" style="height: 128px" required>{{resource.description}}</textarea>
+                        <label for="floatingInput"><i class="fas fa-align-justify"></i> Description</label>
+                        <div class="invalid-feedback">Description is required</div>
+                    </div>
+                </div>
+            </div>
+
+            {% comment %} <table>
                 <tbody>
                     <tr>
                         <th><label for="id_resource_type"><i class="fas fa-briefcase-medical"></i> Resource Type:</label></th>
@@ -67,7 +176,7 @@
                         <td><input type="text" name="description" maxlength="1024" required="" id="id_description" value="{{resource.description}}"></td>
                     </tr>
                 </tbody>
-            </table>
+            </table> {% endcomment %}
             
             <div class="card-footer text-center">
                 <button class="btn btn-primary" type="submit"><i class="fas fa-edit"></i> Submit Update</button>

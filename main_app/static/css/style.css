@@ -7,7 +7,9 @@ body {
 :root {
     --set-size: 1;
 }
-body {
+
+/* Accessibility Zoom Implemented here and tied to js handler/listener with --set-size variable */
+html {
     font-size: calc(100% * var(--set-size));
 }
 
@@ -23,11 +25,24 @@ main > .container {
 }
 
 i.fas, i.far {
-    display:inline-block; /* chrome-fix */
+    display: inline-block; /* chrome-fix */
 }
 
-.drop-li-hover:hover .dropdown-menu{
+.fa-hidden {
+    visibility: hidden !important;
+}
+
+/* .drop-li-hover:hover .dropdown-menu{
     display: block;
+} */
+
+/* Hides powered by google translate, makes space on navbar */
+.goog-logo-link {
+    display:none !important;
+} 
+    
+.goog-te-gadget{
+    color: transparent !important;
 }
 
 .about-card {
@@ -76,9 +91,6 @@ body {
     padding: 12px 12px;
 }
 
-#dropdownMenuButton {
-    width: 167px;
-}
 
 #copyTarget:hover {
     cursor: pointer;

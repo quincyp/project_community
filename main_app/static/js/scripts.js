@@ -1,9 +1,32 @@
+// Bootstrap validator, disabling form submissions if there are invalid fields
+(() => {
+    'use strict';
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation');
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach((form) => {
+        form.addEventListener('submit', (event) => {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+        }, false);
+    });
+})();
+
+// Keep sizing dropdown menu open
+$('.dropdown-stay').on('click', function (e) {
+    e.stopPropagation();
+});
 
 // Get and Set the font size from the cookie on load
 let size = 1;
-size = Cookies.get('size');
+size = parseFloat(Cookies.get('size'));
 document.documentElement.setAttribute("style", `--set-size: ${size}`);
-console.log(size);
+console.log("Size: " + size);
 
 // Accessibility text magnifier
 $("#zoomMinus").on("click", function(){
@@ -45,16 +68,8 @@ $(document).ready(function() {
     $("i.far").popover({'trigger':'hover'});
 });
 
-let popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
-    trigger: 'hover'
-});
 
 
-// Keep sizing dropdown menu open
-$(document).on('click', '.dropdown-stay', function (e) {
-    console.log('propogate');
-    e.stopPropagation();
-});
 
 // Copy to clipboard
 function clipboardCopy() {

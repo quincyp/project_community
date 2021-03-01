@@ -3,26 +3,30 @@
 {% block content %}
 
 <h1 class="mt-5">Resources</h1>
-<p class="lead">Community Resources!</p>
 
-
-<div class="container">
+<div class="container mt-3">
     <div class="row mb-3">
         <div class="col-md-6">
             <button
-                class="btn btn-primary d-inline-block mb-2" 
+                class="btn btn-primary mb-2" 
+                {% comment %} Popover messsage previously here                 
                 tabindex="0" 
                 data-bs-toggle="popover" 
                 data-bs-trigger="focus" 
                 data-bs-placement="bottom" 
                 title="Locate (Permission Required)" 
                 data-bs-content="Locate may take a moment to process" 
+                {% endcomment %}
                 id="getUserButton">
                 <i class="fas fa-crosshairs"></i> Map My Location
             </button>
+
+            <button class="btn btn-primary mb-2" type="button" id="mapLoadButton" style="display:none" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading Location
+            </button>
         </div>
         <div class="col-md-6">
-            {% comment %} REVIEW: default/all resources/none shown? {% endcomment %}
             <div class="dropdown">
                 <span class="lead">I am looking for...</span> 
                 <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">{{resource_query}}</button>
@@ -34,7 +38,7 @@
                     <li><a class="dropdown-item" href="?resource_type=Employment">Employment</a></li>
                     <li><a class="dropdown-item" href="?resource_type=Education">Education</a></li>
                     <li><a class="dropdown-item" href="?resource_type=Utility/Financial">Utility/Financial</a></li>
-                    <li><a class="dropdown-item" href="?resource_type=Transportaion">Transportaion</a></li>
+                    <li><a class="dropdown-item" href="?resource_type=Transportation">Transportation</a></li>
                     <li><a class="dropdown-item" href="?resource_type=Disability">Disability</a></li>
                     <li><a class="dropdown-item" href="?resource_type=Domestic Violence">Domestic Violence</a></li>
                 </ul>

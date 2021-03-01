@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="mt-5">Home</h1>
+    {% comment %} <h1 class="mt-5">Home</h1> {% endcomment %}
     {% comment %} <p class="lead">Community Resources!</p> {% endcomment %}
     
-    <div class="row">
+    <div class="container h-75">
+    <div class="row h-100 align-items-center text-center">
         <div class="col">
-            <h2 class="mt-5">Project Community is a social services / community resources application with the goal of helping people find resources nearby.<h1>
-        </div>
-    <div class="row mt-5">
-        <div class="col text-center">
+        <i class="fas fa-9x fa-search-location mb-5"></i>
+            <h2>Project Community is a social services / community resources application</h2>
+            <h2 class="mb-5">with the goal of transforming lives by helping people find resources nearby.</h2>
+            <h5 class="text-muted">Project Community is built with visual impairment,</h5>
+            <h5 class="text-muted">language accessibility, and technology ease of use in mind</h5>
+            <h5 class="text-muted mb-5">to ensure all users have the opportunity to find what they need.</h5>
             <a href="{% url 'resources_index' %}"><button class="btn btn-primary btn-lg"><i class="fas fa-search-location"></i> Find Resources Now</button></a>
         </div>
     </div>
