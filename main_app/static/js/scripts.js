@@ -22,11 +22,15 @@ $('.dropdown-stay').on('click', function (e) {
     e.stopPropagation();
 });
 
-// Get and Set the font size from the cookie on load
+
+// Get and Set the font size on load
 let size = 1;
-size = parseFloat(Cookies.get('size'));
+if(Cookies.get('size')) {
+    size = parseFloat(Cookies.get('size'));
+}
 document.documentElement.setAttribute("style", `--set-size: ${size}`);
 console.log("Size: " + size);
+
 
 // Accessibility text magnifier
 $("#zoomMinus").on("click", function(){
@@ -56,8 +60,8 @@ const setZoom = function setZoom(choice) {
     console.log(size);
 }
 
-// Script for bootstrap popovers
 
+// Script for bootstrap popovers
 let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
 let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     return new bootstrap.Popover(popoverTriggerEl)
